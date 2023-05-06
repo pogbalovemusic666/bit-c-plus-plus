@@ -8,7 +8,7 @@ class Time
 public:
     Time(int year = 2023, int month = 4, int day = 21)
     {
-        if (month > 12 || month < 0 || day<0 || day>getmonthday(month))
+        if (month > 12 || month < 0 || day<0 || day>getmonthday(year,month))
         {
             cout << "日期错误" << endl;
 
@@ -22,11 +22,16 @@ public:
 
     }
 
-    int getmonthday(int month)
+    int getmonthday(int year, int month)
     {
-        month = month - 1;
-        int monthday[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-        return monthday[month];
+        static int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int day = days[month];
+        if (month == 2
+            && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
+        {
+            day += 1;
+        }
+        return day;
     }
 
 
@@ -74,9 +79,9 @@ public:
     Time& operator+=(int day)
     {
         this->_day += day;
-        while (this->_day > getmonthday(this->_month))
+        while (this->_day > getmonthday(this->_year,this->_month))
         {
-            this->_day -= getmonthday(this->_month);
+            this->_day -= getmonthday(this->_year,this->_month);
             this->_month++;
             if (this->_month == 13)
             {
@@ -95,9 +100,9 @@ public:
 
         Time ret;
         ret._day += day;
-        while (ret._day > getmonthday(ret._month))
+        while (ret._day > getmonthday(ret._year,ret._month))
         {
-            ret._day -= getmonthday(ret._month);
+            ret._day -= getmonthday(ret._year, ret._month);
             ret._month++;
             if (ret._month == 13)
             {
@@ -139,6 +144,35 @@ public:
         cout << "可以" << endl;
     
     }
+ // 日期-日期 返回天数
+ int operator-(const Time& d)
+ {
+
+     int returndays = 0;
+
+     returndays = this->_day - d._day;
+     for (int i = d._month; i < this->_month; i++)
+     {
+
+
+         returndays +=getmonthday(this->_year,i) ;
+
+     }
+     for (int i = d._year; i < this->_year; i++)
+     {
+
+         returndays += 365;
+             if(getmonthday(i, 2)==29)
+                 returndays += 1;
+
+     }
+ 
+
+  
+
+     return returndays+1;
+ 
+ }
 
 
 private:
