@@ -1,6 +1,6 @@
 ﻿// lesson8.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-
+using namespace std;
 #include <iostream>
 #include"mystring.h"
 
@@ -131,7 +131,7 @@
 
 
 using namespace jhx;
-using std::cout;
+//using std::cout;
 
 int main()
 {
@@ -144,8 +144,9 @@ int main()
     std::cout << out;*/
 
 
-    string str;
-    str.test1();
+  
+    jhx::string s1;
+    s1.test1();
 
    /* for (auto ch : str)
     {
