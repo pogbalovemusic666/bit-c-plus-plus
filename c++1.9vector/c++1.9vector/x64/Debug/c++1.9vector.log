@@ -1,0 +1,14 @@
+﻿  c++1.9vector.cpp
+C:\Users\10098\Desktop\c++\c++1.9vector\c++1.9vector\1.9vector.h(148,18): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\10098\Desktop\c++\c++1.9vector\c++1.9vector\1.9vector.h(142,1): message : 在编译 类 模板 成员函数“void jhx::vector<int>::insert(int *,const T &)”时
+          with
+          [
+              T=int
+          ]
+C:\Users\10098\Desktop\c++\c++1.9vector\c++1.9vector\1.9vector.h(229,11): message : 查看对正在编译的函数 模板 实例化“void jhx::vector<int>::insert(int *,const T &)”的引用
+          with
+          [
+              T=int
+          ]
+C:\Users\10098\Desktop\c++\c++1.9vector\c++1.9vector\1.9vector.h(223,15): message : 查看对正在编译的 类 模板 实例化“jhx::vector<int>”的引用
+  c++1.9vector.vcxproj -> C:\Users\10098\Desktop\c++\c++1.9vector\x64\Debug\c++1.9vector.exe
